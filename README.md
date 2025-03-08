@@ -4,8 +4,7 @@ GLKIo2.sys Research (PoC)
 - sc.exe create GLKIo2 binpath=[Path to]\GLKIO2.sys type=kernal
 - sc.exe start GLKIo2
   - Run compiled main.cpp from command line cmd.exe (Non-admin)
-#In the function sub_140001B20, the most relevant IOCTL codes being handled are:
-
+# In the function sub_140001B20, the most relevant IOCTL codes being handled are:
 -0x80102040 (case -2146426816)
 -0x80102044 (case -2146426812)
  -0x80102050 (case -2146426800, which matches the IOCTL_GLCKIO_VMWRITE being used)
