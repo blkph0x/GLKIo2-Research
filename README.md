@@ -1,4 +1,4 @@
-# GLKIo2-Research
+# GLCKIo2-Research
 GLCKIo2.sys Research (PoC)
 # Usage
 - sc.exe create GLCKIo2 binPath=[Path to]\GLCKIO2.sys type=kernel
